@@ -16,10 +16,10 @@ FINAL [\.\,!?\:\;]
 %%
 
 {ALFANUM}{OP}*{ARROBA}{OP2}*{ALFANUM}{COMERCIAL}* { printf("%s\n",yytext) ; }
-
+{ALFANUM}{OP}*{ARROBA}{OP2}*{ALFANUM}{COMERCIAL}*{FINAL} { yytext[strlen(yytext)-1]='\0'; printf("%s\n",yytext) ;}
 
 {SIM2} ;
-{ALFANUM} ; 
+{ALFANUM} ;
 [[:space:]]+ ;
 [[:^space:]]+ ;
 
@@ -31,7 +31,3 @@ int main() {
   yylex();
   return 0;
 }
-
-
-
-
